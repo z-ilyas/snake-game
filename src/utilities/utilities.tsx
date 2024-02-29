@@ -24,4 +24,10 @@ export interface IObjectBody {
       });
     }
   };
+
+  export const generateRandomPosition = (maxX: number, maxY: number): IObjectBody => {
+    const x = Math.floor(Math.random() * maxX);
+    const y = Math.floor(Math.random() * maxY);
+    return { x, y };
+};
   
