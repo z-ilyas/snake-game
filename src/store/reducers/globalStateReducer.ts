@@ -19,3 +19,4 @@ export const globalState: IGlobalState = {
   ],
     disallowedDirection: ""
 };
+
