@@ -5,6 +5,7 @@ export interface ISnakeCoord {
 
 export interface IGlobalState {
   snake: ISnakeCoord[] | [];
+  disallowedDirection: string;
 }
 
 export const globalState: IGlobalState = {
@@ -16,4 +17,5 @@ export const globalState: IGlobalState = {
     { x: 520, y: 300 },
     { x: 500, y: 300 },
   ],
+    disallowedDirection: ""
 };
