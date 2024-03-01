@@ -11,11 +11,11 @@ export interface IObjectBody {
   
   export const drawObject = (
     context: CanvasRenderingContext2D | null,
-    objectBody: IObjectBody[],
+    objectBody: IObjectBody[] | undefined, // Update the type to allow undefined
     fillColor: string,
     strokeStyle = "#146356"
   ) => {
-    if (context) {
+    if (context && objectBody) { // Check if objectBody is defined
       objectBody.forEach((object: IObjectBody) => {
         context.fillStyle = fillColor;
         context.strokeStyle = strokeStyle;
@@ -24,6 +24,7 @@ export interface IObjectBody {
       });
     }
   };
+  
 
   export const generateRandomPosition = (maxX: number, maxY: number): IObjectBody => {
     const x = Math.floor(Math.random() * maxX);

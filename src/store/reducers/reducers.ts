@@ -1,16 +1,9 @@
 import { combineReducers } from 'redux';
 import { IGlobalState } from './globalStateReducer.ts';
-import { globalState } from './globalStateReducer.ts';
-
-
-const snakeReducer = (state = globalState.snake, action) => {
-  // Handle actions here
-  return state;
-};
+import { snakeReducer } from './globalStateReducer.ts';
 
 const rootReducer = combineReducers({
-  snake: snakeReducer
+  globalState: snakeReducer
 });
 
 export default rootReducer;
-
