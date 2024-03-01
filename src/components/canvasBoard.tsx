@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearBoard, drawObject, generateRandomPosition } from '../utilities/utilities.ts';
+import { clearBoard, drawObject, generateRandomPosition } from '../utilities/utilities.tsx';
 import { moveSnake } from '../store/actions/actions.ts';
 
 export interface ICanvasBoard {
@@ -14,6 +14,9 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
   const snake1 = useSelector((state: IGlobalState) => state.snake);
   const disallowedDirection = useSelector((state: IGlobalState) => state.disallowedDirection);
   const dispatch = useDispatch();
+
+  const pos = generateRandomPosition(width - 20, height - 20);
+
 
   const handleKeyEvents = useCallback(
     (event: KeyboardEvent) => {

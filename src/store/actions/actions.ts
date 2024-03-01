@@ -14,10 +14,13 @@ export interface ISnakeCoord {
   x: number;
   y: number;
 }
-export const makeMove = (dx: number, dy: number, move: string) => ({
-  type: move,
-  payload: [dx, dy]
+// actions.ts
+
+export const moveSnake = (dx: number, dy: number, ds: string) => ({
+  type: MOVE_SNAKE,
+  payload: { dx, dy, ds }
 });
+
 
 export const setDisDirection = (direction: string) => ({
   type: SET_DIS_DIRECTION,
