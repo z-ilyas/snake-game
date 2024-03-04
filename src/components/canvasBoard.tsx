@@ -14,9 +14,28 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
   const snake1 = useSelector((state: IGlobalState) => state.snake);
   const disallowedDirection = useSelector((state: IGlobalState) => state.disallowedDirection);
   const dispatch = useDispatch();
-
   const pos = generateRandomPosition(width - 20, height - 20);
 
+  const moveSnake = useCallback(
+    (dx = 0, dy = 0, ds: string) => {
+        if (dx > 0 && dy === 0 && ds !== "RIGHT") {
+            dispatch(makeMove(dx, dy, MOVE_RIGHT));
+        }
+
+        if (dx < 0 && dy === 0 && ds !== "LEFT") {
+            dispatch(makeMove(dx, dy, MOVE_LEFT));
+        }
+
+        if (dx === 0 && dy < 0 && ds !== "UP") {
+            dispatch(makeMove(dx, dy, MOVE_UP));
+        }
+
+        if (dx === 0 && dy > 0 && ds !== "DOWN") {
+            dispatch(makeMove(dx, dy, MOVE_DOWN));
+        }
+    },
+    [dispatch]
+);
 
   const handleKeyEvents = useCallback(
     (event: KeyboardEvent) => {
